@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">apirn</string>
+    <string name="welcome">welcome to apirn.com</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="join">join</string>
+    <string name="url">http://apirn.com/</string>
+</resources>
