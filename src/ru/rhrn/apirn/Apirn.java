@@ -1,9 +1,9 @@
 package ru.rhrn.apirn;
 
+import ru.rhrn.apirn.Net;
 import android.app.Activity;
 import android.os.Bundle;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import android.content.Context;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 public class Apirn extends Activity
 {
+
+    Net net = new Net((Context) this);
+    
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -24,24 +27,14 @@ public class Apirn extends Activity
         EditText email = (EditText) findViewById(R.id.email);
         EditText password = (EditText) findViewById(R.id.password);
 
-        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(this.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-
-        if (isOnline()) {
+        if (net.isOnline()) {
           Toast.makeText(this, "network enabled", Toast.LENGTH_SHORT).show();
+          
         } else {
           Toast.makeText(this, "network disabled", Toast.LENGTH_SHORT).show();
         }
 
-        Toast.makeText(this, R.string.url, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, net.join(email.getText().toString(), password.getText().toString()), Toast.LENGTH_SHORT).show();
     }
 
-    public boolean isOnline() {
-
-        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(this.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-
-        return (networkInfo != null && networkInfo.isConnected());
-
-    }
 }
