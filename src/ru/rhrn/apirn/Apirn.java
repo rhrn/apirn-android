@@ -1,6 +1,6 @@
 package ru.rhrn.apirn;
 
-import ru.rhrn.apirn.Net;
+import ru.rhrn.apirn.NetHelper;
 import android.app.Activity;
 import android.os.Bundle;
 import android.content.Context;
@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class Apirn extends Activity
 {
 
-    Net net = new Net((Context) this);
+    NetHelper net = new NetHelper((Context) this);
     
     /** Called when the activity is first created. */
     @Override
