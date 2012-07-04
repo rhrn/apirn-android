@@ -25,7 +25,17 @@ public class NetHelper {
 
         String joinURL = baseApiURL + "join/";
 
-        return joinURL;
+        url.url(joinURL);
+
+        String text = "";
+
+        try {
+          text = url.get();
+        } catch(Exception e) {
+
+        }
+
+        return text;
     }
 
     public boolean isOnline() {
